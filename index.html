@@ -6,13 +6,11 @@
 <title>Balsa Nova | Curiosidades</title>
 
 <style>
-
-/* 🔥 FUNDO */
 body {
   margin: 0;
   font-family: "Georgia", serif;
-  background: linear-gradient(135deg, #0f001a, #1a0033);
-  color: #e5d4ff;
+  background: linear-gradient(135deg, #fff7cc, #fde68a);
+  color: #5c4400;
 
   display: flex;
   justify-content: center;
@@ -20,82 +18,87 @@ body {
   min-height: 100vh;
 }
 
-/* CONTAINER */
 .container {
   max-width: 900px;
   width: 90%;
   padding: 20px;
-
-  border: 2px solid #a855f7;
   border-radius: 20px;
-  background: rgba(20, 10, 30, 0.85);
-
-  animation: fadeUp 0.8s ease;
+  background: #fffdf3;
+  box-shadow: 0 0 25px rgba(0,0,0,0.1);
 }
 
-/* HEADER */
 .header {
   text-align: center;
 }
 
 .title {
   font-size: 2.8em;
-  color: #d8b4fe;
-  text-shadow: 0 0 15px #a855f7;
+  color: #d4a200;
 }
 
 .subtitle {
-  color: #ccc;
+  color: #8a6a00;
 }
 
-/* MENU */
-.menu {
+.tabs {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
+  gap: 5px;
+  margin: 25px 0;
   flex-wrap: wrap;
 }
 
-.menu button {
-  background: transparent;
-  border: 1px solid #a855f7;
-  color: #e5d4ff;
-  padding: 10px;
-  border-radius: 10px;
+.tabs button {
+  background: #fde68a;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 12px 12px 0 0;
   cursor: pointer;
-  transition: 0.3s;
+  font-weight: bold;
 }
 
-.menu button:hover {
-  background: #a855f7;
-  transform: scale(1.1);
+.tabs button.active {
+  background: #fff;
 }
 
-/* SEÇÕES */
-.section {
+.tab-content {
   display: none;
+  background: #fff;
+  padding: 20px;
+  border-radius: 0 0 15px 15px;
 }
 
-.active {
+.tab-content.active {
   display: block;
 }
 
-/* CARDS */
 .card {
-  background: rgba(30, 20, 50, 0.8);
+  background: #fff7cc;
   padding: 15px;
-  border-radius: 15px;
-  margin-bottom: 15px;
-  box-shadow: 0 0 15px rgba(168,85,247,0.5);
+  border-radius: 12px;
+  margin-bottom: 10px;
 }
 
-/* ANIMAÇÃO */
-@keyframes fadeUp {
-  from {opacity:0; transform: translateY(30px);}
-  to {opacity:1; transform: translateY(0);}
+.img-box {
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fde68a;
+  padding: 5px;
 }
 
+.img-box img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.img-box img:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
 </style>
 </head>
 
@@ -105,71 +108,101 @@ body {
 
   <div class="header">
     <div class="title">🏞️ Balsa Nova</div>
-    <div class="subtitle">7 Curiosidades sobre a cidade</div>
+    <div class="subtitle">7 Curiosidades</div>
   </div>
 
-  <div class="menu">
-    <button onclick="show('home')">Início</button>
-    <button onclick="show('curiosidades')">Curiosidades</button>
+  <div class="tabs">
+    <button class="active" onclick="openTab(event, 'inicio')">Início</button>
+    <button onclick="openTab(event, 'c1')">1</button>
+    <button onclick="openTab(event, 'c2')">2</button>
+    <button onclick="openTab(event, 'c3')">3</button>
+    <button onclick="openTab(event, 'c4')">4</button>
+    <button onclick="openTab(event, 'c5')">5</button>
+    <button onclick="openTab(event, 'c6')">6</button>
+    <button onclick="openTab(event, 'c7')">7</button>
   </div>
 
   <!-- INÍCIO -->
-  <div id="home" class="section active">
+  <div id="inicio" class="tab-content active">
     <div class="card">
-      <h2>✨ Sobre a cidade</h2>
-      <p>
-        Balsa Nova é uma cidade do interior do Paraná, conhecida por suas paisagens naturais,
-        clima tranquilo e proximidade com Curitiba.
-      </p>
+      <div class="img-box">
+        <img src="IMAGEM_AQUI.jpg">
+      </div>
+      <h2>Sobre</h2>
+      <p><b>Balsa Nova</b> é uma cidade do interior do Paraná conhecida por suas paisagens naturais, tranquilidade e proximidade com Curitiba. É um local que mistura natureza, história e um estilo de vida mais calmo.</p>
     </div>
   </div>
 
   <!-- CURIOSIDADES -->
-  <div id="curiosidades" class="section">
 
+  <div id="c1" class="tab-content">
     <div class="card">
+      <div class="img-box"><img src="IMAGEM_AQUI.jpg"></div>
       <h3>1️⃣ Origem do nome</h3>
-      <p>O nome "Balsa Nova" vem de uma antiga balsa usada para atravessar o rio na região.</p>
+      <p>O nome “Balsa Nova” vem de uma antiga travessia feita por balsas na região. Antes da construção de pontes, essas estruturas eram essenciais para atravessar rios, permitindo o transporte de pessoas, animais e mercadorias. Com o tempo, uma nova balsa foi criada, mais eficiente, e o nome acabou sendo adotado pela cidade.</p>
     </div>
+  </div>
 
+  <div id="c2" class="tab-content">
     <div class="card">
-      <h3>2️⃣ Próxima de Curitiba</h3>
-      <p>A cidade fica a cerca de 50 km de Curitiba, sendo uma rota importante.</p>
+      <div class="img-box"><img src="IMAGEM_AQUI.jpg"></div>
+      <h3>2️⃣ Localização estratégica</h3>
+      <p>A cidade está localizada a cerca de 50 km de Curitiba, o que a torna um ponto estratégico. Isso permite fácil acesso à capital enquanto mantém um ambiente mais tranquilo, sendo ideal para quem quer equilíbrio entre cidade e interior.</p>
     </div>
+  </div>
 
+  <div id="c3" class="tab-content">
     <div class="card">
-      <h3>3️⃣ Natureza forte</h3>
-      <p>Possui muitas áreas verdes, rios e paisagens naturais preservadas.</p>
+      <div class="img-box"><img src="IMAGEM_AQUI.jpg"></div>
+      <h3>3️⃣ Natureza e paisagens</h3>
+      <p>Balsa Nova é cercada por áreas verdes, rios e paisagens naturais pouco exploradas. Isso proporciona contato direto com a natureza e atividades como trilhas, além de oferecer ar puro e qualidade de vida.</p>
     </div>
+  </div>
 
+  <div id="c4" class="tab-content">
     <div class="card">
-      <h3>4️⃣ Estrada histórica</h3>
-      <p>Fica próxima à famosa Estrada da Graciosa, uma rota turística histórica.</p>
+      <div class="img-box"><img src="IMAGEM_AQUI.jpg"></div>
+      <h3>4️⃣ Região histórica</h3>
+      <p>A região está ligada a caminhos históricos importantes do Paraná, utilizados desde o período colonial. Essas rotas ajudaram no desenvolvimento econômico e cultural da área.</p>
     </div>
+  </div>
 
+  <div id="c5" class="tab-content">
     <div class="card">
-      <h3>5️⃣ Clima tranquilo</h3>
-      <p>É conhecida por ser uma cidade calma, ideal para quem busca sossego.</p>
+      <div class="img-box"><img src="IMAGEM_AQUI.jpg"></div>
+      <h3>5️⃣ Estilo de vida tranquilo</h3>
+      <p>Diferente de grandes cidades, Balsa Nova oferece um ritmo mais calmo e menos estressante, sendo ideal para quem busca paz e qualidade de vida.</p>
     </div>
+  </div>
 
+  <div id="c6" class="tab-content">
     <div class="card">
-      <h3>6️⃣ Agricultura</h3>
-      <p>A economia local tem forte ligação com agricultura e produção rural.</p>
+      <div class="img-box"><img src="IMAGEM_AQUI.jpg"></div>
+      <h3>6️⃣ Economia agrícola</h3>
+      <p>A economia local é baseada principalmente na agricultura, com produção rural e propriedades familiares que mantêm tradições vivas.</p>
     </div>
+  </div>
 
+  <div id="c7" class="tab-content">
     <div class="card">
+      <div class="img-box"><img src="IMAGEM_AQUI.jpg"></div>
       <h3>7️⃣ Crescimento recente</h3>
-      <p>Nos últimos anos, Balsa Nova vem crescendo com novos moradores.</p>
+      <p>Nos últimos anos, a cidade vem crescendo com novos moradores e melhorias na infraestrutura, mantendo seu charme interiorano.</p>
     </div>
-
   </div>
 
 </div>
 
 <script>
-function show(id) {
-  document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+function openTab(evt, tabName) {
+  let tabs = document.querySelectorAll(".tab-content");
+  let buttons = document.querySelectorAll(".tabs button");
+
+  tabs.forEach(tab => tab.classList.remove("active"));
+  buttons.forEach(btn => btn.classList.remove("active"));
+
+  document.getElementById(tabName).classList.add("active");
+  evt.currentTarget.classList.add("active");
 }
 </script>
 
