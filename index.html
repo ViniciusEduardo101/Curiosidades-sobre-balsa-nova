@@ -3,182 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Balsa Nova - Curiosidades</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<title>Balsa Nova | Curiosidades</title>
 
 <style>
 
+/* 🔥 FUNDO */
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #0f172a;
-    color: white;
+  margin: 0;
+  font-family: "Georgia", serif;
+  background: linear-gradient(135deg, #0f001a, #1a0033);
+  color: #e5d4ff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-h1 {
-    text-align: center;
-    margin: 40px 0;
-    font-size: 2.5em;
-}
-
-/* GRID PINTEREST */
+/* CONTAINER */
 .container {
-    column-count: 3;
-    column-gap: 20px;
-    padding: 20px;
+  max-width: 900px;
+  width: 90%;
+  padding: 20px;
+
+  border: 2px solid #a855f7;
+  border-radius: 20px;
+  background: rgba(20, 10, 30, 0.85);
+
+  animation: fadeUp 0.8s ease;
 }
 
-@media(max-width: 900px){
-    .container { column-count: 2; }
-}
-@media(max-width: 600px){
-    .container { column-count: 1; }
+/* HEADER */
+.header {
+  text-align: center;
 }
 
-/* CARD */
+.title {
+  font-size: 2.8em;
+  color: #d8b4fe;
+  text-shadow: 0 0 15px #a855f7;
+}
+
+.subtitle {
+  color: #ccc;
+}
+
+/* MENU */
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.menu button {
+  background: transparent;
+  border: 1px solid #a855f7;
+  color: #e5d4ff;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.menu button:hover {
+  background: #a855f7;
+  transform: scale(1.1);
+}
+
+/* SEÇÕES */
+.section {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+/* CARDS */
 .card {
-    background: #1e293b;
-    margin: 0 0 20px;
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: 0.3s;
-    opacity: 0;
-    transform: translateY(40px);
+  background: rgba(30, 20, 50, 0.8);
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 15px rgba(168,85,247,0.5);
 }
 
-.card.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.card:hover {
-    transform: scale(1.03);
-}
-
-/* IMAGEM */
-.card img {
-    width: 100%;
-    display: block;
-}
-
-/* TEXTO */
-.card h3 {
-    padding: 15px;
-}
-
-/* MODAL */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-}
-
-.modal-content {
-    background: #1e293b;
-    margin: 10% auto;
-    padding: 30px;
-    width: 80%;
-    border-radius: 20px;
-    animation: zoom 0.4s;
-}
-
-.close {
-    float: right;
-    font-size: 25px;
-    cursor: pointer;
-}
-
-@keyframes zoom {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+/* ANIMAÇÃO */
+@keyframes fadeUp {
+  from {opacity:0; transform: translateY(30px);}
+  to {opacity:1; transform: translateY(0);}
 }
 
 </style>
 </head>
+
 <body>
 
-<h1>🌎 Curiosidades sobre Balsa Nova</h1>
+<div class="container">
 
-<div class="container" id="container"></div>
-
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="fechar()">&times;</span>
-    <p id="texto"></p>
+  <div class="header">
+    <div class="title">🏞️ Balsa Nova</div>
+    <div class="subtitle">7 Curiosidades sobre a cidade</div>
   </div>
+
+  <div class="menu">
+    <button onclick="show('home')">Início</button>
+    <button onclick="show('curiosidades')">Curiosidades</button>
+  </div>
+
+  <!-- INÍCIO -->
+  <div id="home" class="section active">
+    <div class="card">
+      <h2>✨ Sobre a cidade</h2>
+      <p>
+        Balsa Nova é uma cidade do interior do Paraná, conhecida por suas paisagens naturais,
+        clima tranquilo e proximidade com Curitiba.
+      </p>
+    </div>
+  </div>
+
+  <!-- CURIOSIDADES -->
+  <div id="curiosidades" class="section">
+
+    <div class="card">
+      <h3>1️⃣ Origem do nome</h3>
+      <p>O nome "Balsa Nova" vem de uma antiga balsa usada para atravessar o rio na região.</p>
+    </div>
+
+    <div class="card">
+      <h3>2️⃣ Próxima de Curitiba</h3>
+      <p>A cidade fica a cerca de 50 km de Curitiba, sendo uma rota importante.</p>
+    </div>
+
+    <div class="card">
+      <h3>3️⃣ Natureza forte</h3>
+      <p>Possui muitas áreas verdes, rios e paisagens naturais preservadas.</p>
+    </div>
+
+    <div class="card">
+      <h3>4️⃣ Estrada histórica</h3>
+      <p>Fica próxima à famosa Estrada da Graciosa, uma rota turística histórica.</p>
+    </div>
+
+    <div class="card">
+      <h3>5️⃣ Clima tranquilo</h3>
+      <p>É conhecida por ser uma cidade calma, ideal para quem busca sossego.</p>
+    </div>
+
+    <div class="card">
+      <h3>6️⃣ Agricultura</h3>
+      <p>A economia local tem forte ligação com agricultura e produção rural.</p>
+    </div>
+
+    <div class="card">
+      <h3>7️⃣ Crescimento recente</h3>
+      <p>Nos últimos anos, Balsa Nova vem crescendo com novos moradores.</p>
+    </div>
+
+  </div>
+
 </div>
 
 <script>
-
-const dados = [
-{
-titulo: "Origem do nome",
-img: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Igreja_Balsa_Nova_PR.jpg",
-texto: "🛶 O nome vem de uma balsa usada para atravessar o Rio Iguaçu."
-},
-{
-titulo: "Tropeiros",
-img: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Serra_do_Purun%C3%A3.jpg",
-texto: "🐎 Era rota de tropeiros que levavam gado."
-},
-{
-titulo: "Capela histórica",
-img: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Capela_Tamandu%C3%A1.jpg",
-texto: "⛪ Possui uma capela do século XVIII."
-},
-{
-titulo: "Natureza",
-img: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Recanto_dos_Papagaios.jpg",
-texto: "🌄 Paisagens naturais incríveis."
-},
-{
-titulo: "Serra do Purunã",
-img: "https://upload.wikimedia.org/wikipedia/commons/8/8a/S%C3%A3o_Luiz_do_Purun%C3%A3.jpg",
-texto: "🏞️ Trilhas e vistas lindas."
-},
-{
-titulo: "Agricultura",
-img: "https://upload.wikimedia.org/wikipedia/commons/2/2c/Plantacao_milho.jpg",
-texto: "🌽 Forte produção agrícola."
-},
-{
-titulo: "Ferrovia",
-img: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Trem_Parana.jpg",
-texto: "🚂 Cresceu com a ferrovia."
+function show(id) {
+  document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 }
-];
-
-const container = document.getElementById("container");
-
-dados.forEach((item, i) => {
-    const card = document.createElement("div");
-    card.className = "card";
-
-    card.innerHTML = `
-        <img src="${item.img}">
-        <h3>${item.titulo}</h3>
-    `;
-
-    card.onclick = () => abrir(item.texto);
-    container.appendChild(card);
-
-    setTimeout(() => card.classList.add("show"), i * 150);
-});
-
-function abrir(texto) {
-    document.getElementById("modal").style.display = "block";
-    document.getElementById("texto").innerText = texto;
-}
-
-function fechar() {
-    document.getElementById("modal").style.display = "none";
-}
-
 </script>
 
 </body>
