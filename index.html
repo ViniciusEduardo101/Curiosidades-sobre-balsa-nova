@@ -1,140 +1,185 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Revista Balsa Nova: 7 Curiosidades</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balsa Nova - Curiosidades</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0f172a;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 2.5em;
+}
+
+/* GRID PINTEREST */
+.container {
+    column-count: 3;
+    column-gap: 20px;
+    padding: 20px;
+}
+
+@media(max-width: 900px){
+    .container { column-count: 2; }
+}
+@media(max-width: 600px){
+    .container { column-count: 1; }
+}
+
+/* CARD */
+.card {
+    background: #1e293b;
+    margin: 0 0 20px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+/* IMAGEM */
+.card img {
+    width: 100%;
+    display: block;
+}
+
+/* TEXTO */
+.card h3 {
+    padding: 15px;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    background: #1e293b;
+    margin: 10% auto;
+    padding: 30px;
+    width: 80%;
+    border-radius: 20px;
+    animation: zoom 0.4s;
+}
+
+.close {
+    float: right;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+@keyframes zoom {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+</style>
 </head>
 <body>
 
-  <!-- Cabeçalho -->
-  <header>
-    <h1>Revista Balsa Nova: 7 Curiosidades Incríveis</h1>
-    <img src="https://via.placeholder.com/1200x400.png?text=Imagem+Capa+Balsa+Nova" alt="Capa Balsa Nova">
-    <div class="buttons">
-        <button onclick="location.href='#curiosidade1'">Começar</button>
-        <button onclick="location.href='#sobre'">Sobre</button>
-        <button onclick="location.href='#contato'">Contato</button>
-    </div>
-  </header>
+<h1>🌎 Curiosidades sobre Balsa Nova</h1>
 
-  <!-- Curiosidade 1 -->
-  <section id="curiosidade1">
-    <h2>1. O Charme Histórico de Balsa Nova</h2>
-    <div class="content">
-      <img src="https://via.placeholder.com/800x400.png?text=Imagem+Hist%C3%B3rica+de+Balsa+Nova" alt="Imagem Histórica de Balsa Nova">
-      <p>Balsa Nova, localizada no estado do Paraná, é uma cidade com um grande patrimônio histórico, marcada pela presença de antigos casarões e igrejas que datam do século XIX. A arquitetura preservada oferece um vislumbre de como a cidade era no tempo de seus primeiros colonizadores.</p>
-    </div>
-    <div class="buttons">
-      <button onclick="location.href='#curiosidade2'">Próxima Curiosidade</button>
-    </div>
-  </section>
+<div class="container" id="container"></div>
 
-  <!-- Curiosidade 2 -->
-  <section id="curiosidade2">
-    <h2>2. A Riqueza Natural da Região</h2>
-    <div class="content">
-      <img src="https://via.placeholder.com/800x400.png?text=Natureza+Balsa+Nova" alt="Imagem da Natureza em Balsa Nova">
-      <p>Com diversas áreas verdes e montanhas, Balsa Nova é um paraíso para os amantes da natureza. A cidade abriga várias trilhas e mirantes que oferecem vistas incríveis de toda a região do Paraná.</p>
-    </div>
-    <div class="buttons">
-      <button onclick="location.href='#curiosidade1'">Anterior</button>
-      <button onclick="location.href='#curiosidade3'">Próxima Curiosidade</button>
-    </div>
-  </section>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="fechar()">&times;</span>
+    <p id="texto"></p>
+  </div>
+</div>
 
-  <!-- Curiosidade 3 -->
-  <section id="curiosidade3">
-    <h2>3. O Fascínio da Gastronomia Local</h2>
-    <div class="content">
-      <img src="https://via.placeholder.com/800x400.png?text=Gastronomia+T%C3%ADpica" alt="Imagem do Prato Típico de Balsa Nova">
-      <p>A culinária de Balsa Nova é uma verdadeira delícia, com destaque para os pratos típicos da região, como o "barreado" e os "cabeludos", preparados com receitas tradicionais passadas de geração em geração.</p>
-    </div>
-    <div class="buttons">
-      <button onclick="location.href='#curiosidade2'">Anterior</button>
-      <button onclick="location.href='#curiosidade4'">Próxima Curiosidade</button>
-    </div>
-  </section>
+<script>
 
-  <!-- Curiosidade 4 -->
-  <section id="curiosidade4">
-    <h2>4. O Acervo Cultural da Cidade</h2>
-    <div class="content">
-      <img src="https://via.placeholder.com/800x400.png?text=Centro+Cultural+Balsa+Nova" alt="Imagem de Centro Cultural de Balsa Nova">
-      <p>Além de suas belezas naturais e históricas, Balsa Nova também se destaca pelo seu acervo cultural. Museus, centros culturais e festivais locais são algumas das atrações que fazem da cidade um importante ponto de encontro cultural no Paraná.</p>
-    </div>
-    <div class="buttons">
-      <button onclick="location.href='#curiosidade3'">Anterior</button>
-      <button onclick="location.href='#curiosidade5'">Próxima Curiosidade</button>
-    </div>
-  </section>
+const dados = [
+{
+titulo: "Origem do nome",
+img: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Igreja_Balsa_Nova_PR.jpg",
+texto: "🛶 O nome vem de uma balsa usada para atravessar o Rio Iguaçu."
+},
+{
+titulo: "Tropeiros",
+img: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Serra_do_Purun%C3%A3.jpg",
+texto: "🐎 Era rota de tropeiros que levavam gado."
+},
+{
+titulo: "Capela histórica",
+img: "https://upload.wikimedia.org/wikipedia/commons/5/5f/Capela_Tamandu%C3%A1.jpg",
+texto: "⛪ Possui uma capela do século XVIII."
+},
+{
+titulo: "Natureza",
+img: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Recanto_dos_Papagaios.jpg",
+texto: "🌄 Paisagens naturais incríveis."
+},
+{
+titulo: "Serra do Purunã",
+img: "https://upload.wikimedia.org/wikipedia/commons/8/8a/S%C3%A3o_Luiz_do_Purun%C3%A3.jpg",
+texto: "🏞️ Trilhas e vistas lindas."
+},
+{
+titulo: "Agricultura",
+img: "https://upload.wikimedia.org/wikipedia/commons/2/2c/Plantacao_milho.jpg",
+texto: "🌽 Forte produção agrícola."
+},
+{
+titulo: "Ferrovia",
+img: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Trem_Parana.jpg",
+texto: "🚂 Cresceu com a ferrovia."
+}
+];
 
-  <!-- Curiosidade 5 -->
-  <section id="curiosidade5">
-    <h2>5. O Encanto das Festas Tradicionais</h2>
-    <div class="content">
-      <img src="https://via.placeholder.com/800x400.png?text=Festa+S%C3%A3o+Sebasti%C3%A3o" alt="Imagem da Festa de São Sebastião">
-      <p>Em Balsa Nova, as festas tradicionais são um reflexo das suas origens e cultura. A Festa de São Sebastião, celebrada anualmente, é uma das mais importantes, com missas, danças e muita música ao vivo.</p>
-    </div>
-    <div class="buttons">
-      <button onclick="location.href='#curiosidade4'">Anterior</button>
-      <button onclick="location.href='#curiosidade6'">Próxima Curiosidade</button>
-    </div>
-  </section>
+const container = document.getElementById("container");
 
-  <!-- Curiosidade 6 -->
-  <section id="curiosidade6">
-    <h2>6. A Presença do Rio Balsa</h2>
-    <div class="content">
-      <img src="https://via.placeholder.com/800x400.png?text=Rio+Balsa+Nova" alt="Imagem do Rio Balsa">
-      <p>O Rio Balsa corta a cidade e tem grande importância na vida cotidiana dos moradores. Além de ser um ponto de lazer e pesca, ele também é fundamental para a irrigação da agricultura local, sendo vital para o desenvolvimento da cidade.</p>
-    </div>
-    <div class="buttons">
-      <button onclick="location.href='#curiosidade5'">Anterior</button>
-      <button onclick="location.href='#curiosidade7'">Próxima Curiosidade</button>
-    </div>
-  </section>
+dados.forEach((item, i) => {
+    const card = document.createElement("div");
+    card.className = "card";
 
-  <!-- Curiosidade 7 -->
-  <section id="curiosidade7">
-    <h2>7. As Belezas do Parque Estadual Pico do Marumbi</h2>
-    <div class="content">
-      <img src="https://via.placeholder.com/800x400.png?text=Pico+do+Marumbi" alt="Imagem do Pico do Marumbi">
-      <p>Embora Balsa Nova seja uma cidade pequena, ela está muito próxima de um dos parques mais famosos do Paraná: o Parque Estadual Pico do Marumbi. É um excelente destino para quem gosta de fazer trilhas, escalar e apreciar paisagens de tirar o fôlego.</p>
-    </div>
-    <div class="buttons">
-      <button onclick="location.href='#curiosidade6'">Anterior</button>
-    </div>
-  </section>
+    card.innerHTML = `
+        <img src="${item.img}">
+        <h3>${item.titulo}</h3>
+    `;
 
-  <!-- Sobre -->
-  <section id="sobre">
-    <h2>Sobre Balsa Nova</h2>
-    <p>Balsa Nova é uma cidade encantadora localizada no estado do Paraná, Brasil. Sua rica história, natureza exuberante e cultura vibrante fazem dela um lugar imperdível para quem busca conhecer o interior do estado.</p>
-  </section>
+    card.onclick = () => abrir(item.texto);
+    container.appendChild(card);
 
-  <!-- Contato -->
-  <section id="contato">
-    <h2>Contato</h2>
-    <form action="enviar_formulario.php" method="POST">
-      <label for="nome">Nome:</label>
-      <input type="text" id="nome" name="nome" required><br><br>
+    setTimeout(() => card.classList.add("show"), i * 150);
+});
 
-      <label for="email">E-mail:</label>
-      <input type="email" id="email" name="email" required><br><br>
+function abrir(texto) {
+    document.getElementById("modal").style.display = "block";
+    document.getElementById("texto").innerText = texto;
+}
 
-      <label for="mensagem">Mensagem:</label><br>
-      <textarea id="mensagem" name="mensagem" required></textarea><br><br>
+function fechar() {
+    document.getElementById("modal").style.display = "none";
+}
 
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-
-  <!-- Rodapé -->
-  <footer>
-    <p>© 2026 Revista Balsa Nova | Criado no GitHub Pages</p>
-  </footer>
+</script>
 
 </body>
 </html>
